@@ -110,16 +110,5 @@ Este repositório utiliza o **GitHub Actions** para CI/CD. O workflow realiza os
 
 ---
 
-## 🌟 Contribuindo
-
-Quer contribuir? Siga esses passos:
-
-1. Faça um fork do projeto.
-2. Crie uma branch (`git checkout -b minha-feature`).
-3. Faça commit das suas alterações (`git commit -m "Minha nova feature"`).
-4. Envie sua branch (`git push origin minha-feature`).
-5. Abra um pull request.
-
----
 
 
