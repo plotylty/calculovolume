@@ -1,4 +1,4 @@
-name: Run Python Tests
+name: Run Python Tests and Publish to SonarCloud
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   test:
+    name: Run Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +20,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.9  # Versão do Python, ajuste conforme necessário
+          python-version: 3.9  # Ajuste conforme necessário
 
       # Instalar dependências
       - name: Install dependencies
@@ -27,13 +28,44 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest pytest-cov
 
-      # Executar os testes
+      # Executar os testes e gerar relatório de cobertura
       - name: Run pytest
-        run: pytest --cov=volume_cilindro
+        run: pytest --cov=volume_cilindro --cov-report=xml
 
-      # Gerar relatório de cobertura
+      # Armazenar o relatório de cobertura como artefato
       - name: Upload coverage report
         uses: actions/upload-artifact@v3
         with:
           name: coverage-report
-          path: .coverage
+          path: coverage.xml
+
+  sonarcloud:
+    name: Publish to SonarCloud
+    runs-on: ubuntu-latest
+    needs: test  # Dependência do job de testes
+
+    steps:
+      # Checkout do código
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Baixar o relatório de cobertura
+      - name: Download coverage report
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage-report
+
+      # Configurar SonarCloud Scanner
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@v2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Armazene o token no GitHub Secrets
+        with:
+          projectBaseDir: .  # Diretório do projeto
+          args: >
+            -Dsonar.organization=paulossjunior-github
+            -Dsonar.projectKey=calculovolume
+            -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.sources=.
+            -Dsonar.tests=.
+            -Dsonar.test.inclusions=**/test_*.py
