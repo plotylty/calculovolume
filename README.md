@@ -1,23 +1,30 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=paulossjunior_calculovolume&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=paulossjunior_calculovolume)
 
 
-Este projeto implementa uma função para calcular o volume de um cilindro com base no raio e na altura fornecidos, além de testes automatizados para garantir a qualidade do código. O GitHub Actions é utilizado para CI/CD, executando os testes automatizados e enviando os resultados para o SonarCloud.
+![Tests](https://img.shields.io/github/actions/workflow/status/paulossjunior/calculovolume/python-tests-sonar.yml?label=Tests&logo=github)
+![Coverage](https://img.shields.io/badge/Coverage-100%25-brightgreen?logo=codecov)
+![SonarCloud](https://img.shields.io/badge/SonarCloud-Passing-brightgreen?logo=sonarcloud)
+![License](https://img.shields.io/badge/License-MIT-blue)
+
+Este projeto é uma solução simples e eficiente para calcular o volume de um cilindro, com foco em **qualidade de código** e **boas práticas**. 🎯
+
+Com testes automatizados, integração contínua via **GitHub Actions** e análise de qualidade com **SonarCloud**, estamos prontos para garantir um código **limpo, confiável e escalável**! 🚀
 
 ---
 
-## Funcionalidades
+## 🛠️ Funcionalidades
 
-- **Cálculo do Volume**: Implementa a fórmula \( V = \pi \cdot r^2 \cdot h \) para calcular o volume de um cilindro.
-- **Validação de Dados**: Gera um erro se o raio ou a altura forem negativos ou zero.
-- **Testes Automatizados**: Testa a função com vários cenários, incluindo entradas válidas e inválidas.
-- **Cobertura de Código**: Mede a cobertura dos testes com `pytest-cov`.
-- **Integração com CI/CD**: 
-  - Execução automatizada dos testes com GitHub Actions.
-  - Envio de análise de código e cobertura de testes para o SonarCloud.
+- 📐 **Cálculo do Volume**: Implementa a fórmula \( V = \pi \cdot r^2 \cdot h \).
+- ✅ **Validação de Dados**: Garante que o raio e a altura sejam valores positivos.
+- 🔍 **Testes Automatizados**: Cobre casos válidos e inválidos.
+- 📊 **Cobertura de Código**: Mede a cobertura com `pytest-cov`.
+- 🤖 **Integração com CI/CD**:
+  - **Testes Automatizados** via GitHub Actions.
+  - **Qualidade de Código** com SonarCloud.
 
 ---
 
-## Estrutura do Projeto
+## 🏗️ Estrutura do Projeto
 
 ```
 .
@@ -31,22 +38,9 @@ Este projeto implementa uma função para calcular o volume de um cilindro com b
 
 ---
 
-## Requisitos
-
-- Python 3.7 ou superior
-- Dependências do projeto:
-  - `pytest`
-  - `pytest-cov`
-- GitHub Actions configurado no repositório.
-- Conta e projeto configurados no [SonarCloud](https://sonarcloud.io/).
-
----
-
-## Como Usar
+## 🧩 Como Usar
 
 1. **Cálculo do Volume:**
-
-   Importe e utilize a função `calcular_volume_cilindro`:
 
    ```python
    from volume_cilindro import calcular_volume_cilindro
@@ -59,15 +53,11 @@ Este projeto implementa uma função para calcular o volume de um cilindro com b
 
 2. **Executando os Testes Localmente:**
 
-   Para rodar os testes automatizados, execute o comando:
-
    ```bash
    pytest --cov=volume_cilindro
    ```
 
 3. **Gerando Relatório de Cobertura Localmente:**
-
-   Para gerar o relatório de cobertura no formato XML, use:
 
    ```bash
    pytest --cov=volume_cilindro --cov-report=xml
@@ -75,46 +65,60 @@ Este projeto implementa uma função para calcular o volume de um cilindro com b
 
 ---
 
-## Integração com GitHub Actions
+## ⚙️ Integração com GitHub Actions
 
-Este repositório utiliza o GitHub Actions para executar testes automatizados e integrar com o SonarCloud. O workflow está definido em `.github/workflows/python-tests-sonar.yml`.
+Este repositório utiliza o **GitHub Actions** para CI/CD. O workflow realiza os seguintes passos:
 
-### Pipeline
+1. **Job de Testes:**
+   - Roda os testes automatizados com `pytest`.
+   - Gera o relatório de cobertura no formato XML.
+   - Armazena o relatório como artefato.
 
-1. **Testes Automatizados:**
-   - Roda os testes usando `pytest`.
-   - Gera um relatório de cobertura no formato XML.
-   - Armazena o relatório como artefato no GitHub Actions.
+2. **Job de SonarCloud:**
+   - Faz o download do relatório gerado.
+   - Envia os dados para o SonarCloud.
 
-2. **SonarCloud:**
-   - Envia os resultados da análise de código e cobertura para o SonarCloud.
-   - Exibe os relatórios detalhados de qualidade do código na interface do SonarCloud.
+### 💻 Configuração do Workflow
 
-### Como Configurar:
-
-1. Configure um projeto no SonarCloud ([Iniciar](https://sonarcloud.io/)).
-2. Gere um **token de autenticação** no SonarCloud.
-3. Adicione o token ao GitHub Secrets do repositório:
-   - Vá em **Settings > Secrets and variables > Actions > New repository secret**.
-   - Crie um segredo chamado `SONAR_TOKEN` com o valor do token gerado.
-4. Atualize o arquivo `.github/workflows/python-tests-sonar.yml` com:
-   - O nome da sua organização: `-Dsonar.organization=seu_organizacao`.
-   - O nome do projeto no SonarCloud: `-Dsonar.projectKey=seu_projeto`.
+1. Configure seu projeto no SonarCloud ([Iniciar](https://sonarcloud.io/)).
+2. Gere um **token** no SonarCloud e adicione ao GitHub Secrets como `SONAR_TOKEN`.
+3. Atualize o arquivo `.github/workflows/python-tests-sonar.yml` com:
+   - O nome da organização: `-Dsonar.organization=seu_organizacao`.
+   - O nome do projeto: `-Dsonar.projectKey=seu_projeto`.
 
 ---
 
-## Resultado Esperado
+## 🏆 Resultado Esperado
 
-### GitHub Actions
-- Ao realizar um `push` na branch principal ou abrir um pull request:
-  - Os testes são executados.
-  - O relatório de cobertura é enviado ao SonarCloud.
+- **GitHub Actions:** 
+  - ✅ Testes executados automaticamente.
+  - 📂 Relatório de cobertura armazenado como artefato.
 
-### SonarCloud
-- Exibe as seguintes métricas:
-  - **Cobertura de Código:** Percentual de código coberto por testes.
-  - **Qualidade do Código:** Relatórios de problemas detectados, duplicações, etc.
-  - **Manutenibilidade:** Métricas para melhorias no código.
+- **SonarCloud:** 
+  - 🔍 Análise de qualidade do código.
+  - 📊 Cobertura de código visível no painel.
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- **Python 3.7+**
+- **pytest** para testes.
+- **pytest-cov** para cobertura.
+- **GitHub Actions** para CI/CD.
+- **SonarCloud** para análise de qualidade de código.
+
+---
+
+## 🌟 Contribuindo
+
+Quer contribuir? Siga esses passos:
+
+1. Faça um fork do projeto.
+2. Crie uma branch (`git checkout -b minha-feature`).
+3. Faça commit das suas alterações (`git commit -m "Minha nova feature"`).
+4. Envie sua branch (`git push origin minha-feature`).
+5. Abra um pull request.
 
 ---
 
