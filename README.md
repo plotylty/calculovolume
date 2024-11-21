@@ -38,7 +38,11 @@ Instale as dependências executando:
 ```bash
 pip install pytest pytest-cov
 ```
+ou 
 
+```bash
+pip install -r requirements.txt
+```
 ---
 
 ## Como Usar
