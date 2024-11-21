@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# pytest cache
+.cache/
+
+# Virtual environment
+venv/
+env/
+
+# Coverage reports
+.coverage
+htmlcov/
+*.cover
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+*.manifest
+*.spec
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS-generated files
+.DS_Store
+Thumbs.db
