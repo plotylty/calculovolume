@@ -64,7 +64,7 @@ jobs:
           projectBaseDir: .  # Diretório do projeto
           args: >
             -Dsonar.organization=paulossjunior-github
-            -Dsonar.projectKey=calculovolume
+            -Dsonar.projectKey=paulossjunior_calculovolume
             -Dsonar.python.coverage.reportPaths=coverage.xml
             -Dsonar.sources=.
             -Dsonar.tests=.

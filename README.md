@@ -1,5 +1,5 @@
 ### README
-
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=paulossjunior_calculovolume&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=paulossjunior_calculovolume)
 # Cálculo do Volume de um Cilindro
 
 Este projeto implementa uma função para calcular o volume de um cilindro com base no raio e na altura fornecidos, além de testes automatizados para garantir a qualidade do código. A biblioteca `pytest` é utilizada para os testes, com suporte a relatórios de cobertura de código por meio do plugin `pytest-cov`.
